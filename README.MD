@@ -1,7 +1,15 @@
 # Инфрастуртура для микросервисов группы Ads
 
 
-### Запуск
+### Установка
+
+```
+docker-compose up kibana
+docker-compose run filebeat setup
+```
+
+
+### Дальнейший запуск
 
 ```
 docker-compose up

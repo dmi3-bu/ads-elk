@@ -1,0 +1,18 @@
+filebeat:
+  inputs:
+    - type: log
+      json:
+        message_key: message
+        keys_under_root: true
+      paths:
+        - /var/log/ads/production.log
+        - /var/log/geocoder/production.log
+        - /var/log/auth/production.log
+
+setup:
+  kibana:
+    host: "http://kibana:5601"
+
+output:
+  elasticsearch:
+    hosts: ["http://elasticsearch:9200"]
