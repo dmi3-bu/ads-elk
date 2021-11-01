@@ -14,5 +14,6 @@ setup:
     host: "http://kibana:5601"
 
 output:
-  elasticsearch:
-    hosts: ["http://elasticsearch:9200"]
+  logstash:
+    enabled: true
+    hosts: ["logstash:5044"]
