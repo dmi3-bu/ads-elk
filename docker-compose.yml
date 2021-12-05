@@ -51,9 +51,29 @@ services:
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
     ports:
       - "5601:5601"
+  prom:
+    image: prom/prometheus
+    container_name: prom
+    network_mode: host
+    volumes:
+      - prometheus:/prometheus
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - prom
+    ports:
+      - "3100:3000"
+    volumes:
+      - grafana:/var/lib/grafana
 
 volumes:
   rabbitmq:
   filebeat:
   elasticsearch:
   logstash:
+  prometheus:
+  grafana:
